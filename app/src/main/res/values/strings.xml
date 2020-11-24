@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Complaints</string>
+    <string name="app_name">Denuncias</string>
     <string name="login">Iniciar Sesión</string>
     <string name="message">Hola!, Gracias por Volver</string>
     <string name="label_email">Correo</string>

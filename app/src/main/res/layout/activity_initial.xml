@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.InitialActivity"
-    android:background="#373636"
+    android:background="#FFFFFF"
     android:padding="12dp"
 >
 
