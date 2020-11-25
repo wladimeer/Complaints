@@ -218,6 +218,7 @@
             tools:ignore="UnusedAttribute"
             android:text="@string/register"
             android:textAllCaps="false"
+            android:onClick="register"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:textSize="18sp"
@@ -230,9 +231,19 @@
             android:text="@string/withAccount"
             android:layout_marginTop="18dp"
             android:layout_gravity="center"
+            android:onClick="goToLogin"
             android:textColor="#FF5722"
             android:textSize="18sp"
-            android:onClick="goToLogin"
+        />
+
+        <TextView
+            android:id="@+id/register_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:textColor="#020202"
+            android:textSize="18sp"
         />
 
     </LinearLayout>

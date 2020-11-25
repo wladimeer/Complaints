@@ -2,6 +2,7 @@ package com.example.complaints.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -24,10 +25,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        txt_email = findViewById(R.id.login_txt_email);
-        txt_password = findViewById(R.id.login_txt_password);
-        message = findViewById(R.id.login_message);
-        assistant = FirebaseAuth.getInstance();
+        if(assistant.getCurrentUser() == null) {
+            setContentView(R.layout.activity_login);
+
+            txt_email = findViewById(R.id.login_txt_email);
+            txt_password = findViewById(R.id.login_txt_password);
+            message = findViewById(R.id.login_message);
+            assistant = FirebaseAuth.getInstance();
+        } else {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void login(View view) {
@@ -47,29 +55,25 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
+        message.setTextColor(Color.parseColor("#D81F1F"));
+
         if(error.isEmpty()) {
             assistant.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
+                        @SuppressLint("SetTextI18n")
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-//                                Intent intent = new Intent(
-//                                        LoginActivity.this, MainActivity.class
-//                                );
-//                                startActivity(intent);
-//                                finish();
+                            if(task.isSuccessful()) {
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
-//                                Toast.makeText(
-//                                        LoginActivity.this,
-//                                        "Hubo un Error al Iniciar Sesión"+ task.getException(),
-//                                        Toast.LENGTH_SHORT
-//                                ).show();
+                                message.setText("Hubo un Error al Iniciar Sesión");
                             }
                         }
                     });
         } else {
             message.setText(error);
-            message.setTextColor(Color.parseColor("#D81F1F"));
         }
     }
 

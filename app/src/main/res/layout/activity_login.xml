@@ -139,8 +139,8 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:padding="12dp"
             android:onClick="login"
+            android:padding="12dp"
         />
 
         <TextView
@@ -233,9 +233,9 @@
             android:layout_marginTop="18dp"
             android:layout_gravity="center"
             android:text="@string/noAccount"
+            android:onClick="goToRegister"
             android:textColor="#FF5722"
             android:textSize="18sp"
-            android:onClick="goToRegister"
         />
 
         <TextView

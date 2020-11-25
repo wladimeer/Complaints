@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.NewComplaintFragment"
+    android:background="#FFFFFF"
+    android:padding="12dp"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent"
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/tab_newComplaint"
+            android:textColor="#191818"
+            android:textStyle="bold"
+            android:textSize="28sp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:text="@string/fragment_new_complaint"
+            android:textColor="#191818"
+            android:textSize="18sp"
+        />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+        >
+
+            <ImageView
+                android:id="@+id/new_complaint_icon_name"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/ic_plus"
+            />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/new_complaint_icon_name"
+                android:layout_toEndOf="@id/new_complaint_icon_name"
+                android:layout_centerInParent="true"
+                android:hint="@string/label_name"
+            >
+<!--                app:endIconMode="clear_text"-->
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/new_complaint_txt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+        >
+
+            <ImageView
+                android:id="@+id/new_complaint_icon_address"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/ic_address"
+            />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/new_complaint_icon_address"
+                android:layout_toEndOf="@id/new_complaint_icon_address"
+                android:layout_centerInParent="true"
+                android:hint="@string/label_email"
+            >
+<!--                app:endIconMode="clear_text"-->
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/new_complaint_txt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/new_complaint_new_complaint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ly_button"
+            android:backgroundTint="#F26824"
+            android:layout_marginTop="22dp"
+            tools:ignore="UnusedAttribute"
+            android:text="@string/new_complaint"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="12dp"
+        />
+
+        <TextView
+            android:id="@+id/new_complaint_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:textColor="#020202"
+            android:textSize="18sp"
+        />
+
+    </LinearLayout>
+
+</FrameLayout>

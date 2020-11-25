@@ -15,4 +15,12 @@
     <string name="label_name">Nombre</string>
     <string name="label_cellphone">Celular</string>
     <string name="label_password">Contraseña</string>
+    <string name="label_address">Dirección</string>
+
+    <string name="tab_newComplaint">Nueva Denuncia</string>
+    <string name="tab_myComplaint">Mis Denuncias</string>
+    <string name="tab_complaints">Denuncias</string>
+
+    <string name="new_complaint">Crear Denuncia</string>
+    <string name="fragment_new_complaint">¿Quieres Realizar una Nueva Denuncia?</string>
 </resources>
