@@ -1,5 +1,6 @@
 package com.example.complaints.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.example.complaints.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import com.example.complaints.ui.main.SectionsPagerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,5 +38,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void signOff(View view) {
+        FirebaseAuth assistant = FirebaseAuth.getInstance();
+        assistant.signOut();
+
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

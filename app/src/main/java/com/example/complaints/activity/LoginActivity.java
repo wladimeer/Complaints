@@ -25,13 +25,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        assistant = FirebaseAuth.getInstance();
+
         if(assistant.getCurrentUser() == null) {
             setContentView(R.layout.activity_login);
 
             txt_email = findViewById(R.id.login_txt_email);
             txt_password = findViewById(R.id.login_txt_password);
             message = findViewById(R.id.login_message);
-            assistant = FirebaseAuth.getInstance();
         } else {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
