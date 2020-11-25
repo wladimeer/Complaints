@@ -7,6 +7,7 @@
         <item name="colorControlNormal">#BCB1B1</item>
         <item name="colorControlActivated">#252525</item>
         <item name="colorControlHighlight">#F26824</item>
+        <item name="fontFamily">@font/worksansregular</item>
     </style>
 
     <style name="SplashScreen">

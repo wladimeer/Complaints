@@ -1,4 +1,4 @@
-package com.example.complaints.view;
+package com.example.complaints.activity;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;

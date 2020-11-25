@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.InitialActivity"
+    tools:context=".activity.InitialActivity"
     android:background="#FFFFFF"
-    android:padding="12dp"
+    android:padding="16dp"
 >
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:src="@drawable/layout_logo"
+        android:src="@drawable/ly_logo"
         tools:ignore="ContentDescription"
     />
 

@@ -1,13 +1,18 @@
 <resources>
-    <string name="app_name">Denuncias</string>
+    <string name="app_name">Denuncia Ciudadana</string>
     <string name="login">Iniciar Sesión</string>
-    <string name="message">Hola!, Gracias por Volver</string>
-    <string name="label_email">Correo</string>
-    <string name="label_password">Contraseña</string>
-    <string name="input_email">example@example.com</string>
-    <string name="input_password">********</string>
-    <string name="options">Elige con que Iniciar Sesión!</string>
+    <string name="login_message">Hola!, Gusto en Verte Otra Vez</string>
+    <string name="label_options">Elige una Cuenta para Iniciar Sesión</string>
     <string name="facebook">Facebook</string>
     <string name="twitter">Twitter</string>
     <string name="noAccount">¿No Tienes una Cuenta? Registrate</string>
+
+    <string name="register">Crear Cuenta</string>
+    <string name="message_register">Hola!, Sólo te Tomará 3 Minutos</string>
+    <string name="withAccount">¿Tienes una Cuenta? Inicia Sesión</string>
+
+    <string name="label_email">Correo</string>
+    <string name="label_name">Nombre</string>
+    <string name="label_cellphone">Celular</string>
+    <string name="label_password">Contraseña</string>
 </resources>
