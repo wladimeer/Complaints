@@ -74,6 +74,7 @@ public class NewComplaintFragment extends Fragment {
             Complaint complaint = new Complaint();
             complaint.setName(name);
             complaint.setAddress(address);
+            complaint.setState(false);
 
             reference.push().setValue(complaint);
 

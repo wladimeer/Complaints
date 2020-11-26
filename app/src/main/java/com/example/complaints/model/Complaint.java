@@ -4,13 +4,15 @@ public class Complaint {
     private String id;
     private String name;
     private String address;
+    private boolean state;
 
     public Complaint() {}
 
-    public Complaint(String id, String name, String address) {
+    public Complaint(String id, String name, String address, boolean state) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.state = state;
     }
 
     public String getId() {
@@ -35,5 +37,13 @@ public class Complaint {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 }
