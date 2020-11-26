@@ -20,6 +20,16 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
         this.layout = layout;
     }
 
+    public static class ComplaintHolder extends RecyclerView.ViewHolder {
+        TextView name, address;
+
+        public ComplaintHolder(@NonNull View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.item_complaint_name);
+            address = itemView.findViewById(R.id.item_complaint_address);
+        }
+    }
+
     @NonNull
     @Override
     public ComplaintHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,6 +41,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
     @Override
     public void onBindViewHolder(@NonNull ComplaintHolder holder, int position) {
         Complaint complaint = complaintList.get(position);
+
         holder.name.setText(complaint.getName());
         holder.address.setText(complaint.getAddress());
     }
@@ -38,15 +49,5 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
     @Override
     public int getItemCount() {
         return complaintList.size();
-    }
-
-    public static class ComplaintHolder extends RecyclerView.ViewHolder {
-        TextView name, address;
-
-        public ComplaintHolder(@NonNull View itemView) {
-            super(itemView);
-            name = itemView.findViewById(R.id.item_complaint_name);
-            address = itemView.findViewById(R.id.item_complaint_address);
-        }
     }
 }

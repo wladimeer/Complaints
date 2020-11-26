@@ -55,7 +55,11 @@ public class MyComplaintsFragment extends Fragment {
 
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Complaint complaint = snapshot.getValue(Complaint.class);
-                        complaint.setId(snapshot.getKey());
+
+                        if (complaint != null) {
+                            complaint.setId(snapshot.getKey());
+                        }
+
                         complaintList.add(complaint);
                     }
 

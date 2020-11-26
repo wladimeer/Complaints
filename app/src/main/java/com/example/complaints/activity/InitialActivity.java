@@ -2,6 +2,7 @@ package com.example.complaints.activity;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -23,11 +24,11 @@ public class InitialActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(checkConnection()) {
-                    Intent intent = new Intent(
-                            InitialActivity.this , LoginActivity.class
-                    );
-
+                if (checkConnection()) {
+                    Intent intent = new Intent(InitialActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(InitialActivity.this, NoNetworkActivity.class);
                     startActivity(intent);
                 }
 
@@ -36,16 +37,15 @@ public class InitialActivity extends AppCompatActivity {
         }, 1500);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private boolean checkConnection() {
         boolean state = false;
 
         ConnectivityManager manager;
         manager = (ConnectivityManager) this.getSystemService(CONNECTIVITY_SERVICE);
-        Network[] networks = manager.getAllNetworks();
+        @SuppressLint({"NewApi", "LocalSuppress"}) Network[] networks = manager.getAllNetworks();
 
         for(Network network : networks) {
-            NetworkInfo info = manager.getNetworkInfo(network);
+            @SuppressLint({"NewApi", "LocalSuppress"}) NetworkInfo info = manager.getNetworkInfo(network);
 
             if(info != null) {
                 state = true;
@@ -54,5 +54,4 @@ public class InitialActivity extends AppCompatActivity {
 
         return state;
     }
-
 }

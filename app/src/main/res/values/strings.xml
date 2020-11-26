@@ -25,4 +25,7 @@
     <string name="fragment_new_complaint">¿Quieres Realizar una Nueva Denuncia?</string>
 
     <string name="loading" tools:ignore="TypographyEllipsis">Cargando...</string>
+    <string name="no_network">Sin Conección</string>
+    <string name="verify">Verifica la Conección a Internet y Vuelve a Intentarlo</string>
+    <string name="exit">Salir de la Aplicación</string>
 </resources>
