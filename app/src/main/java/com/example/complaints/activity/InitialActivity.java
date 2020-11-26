@@ -33,7 +33,7 @@ public class InitialActivity extends AppCompatActivity {
 
                 finish();
             }
-        }, 2500);
+        }, 1500);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

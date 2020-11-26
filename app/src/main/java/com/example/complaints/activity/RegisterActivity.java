@@ -71,9 +71,9 @@ public class RegisterActivity extends AppCompatActivity {
         if(error.isEmpty()) {
             assistant.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         @Override
                         @SuppressLint("SetTextI18n")
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
 

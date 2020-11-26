@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             } else {
-                                message.setText("Hubo un Error al Iniciar Sesión");
+                                message.setText("Verifica los Datos Ingresados");
                             }
                         }
                     });
