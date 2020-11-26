@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Denuncia Ciudadana</string>
     <string name="login">Iniciar Sesión</string>
     <string name="login_message">Hola!, Gusto en Verte Otra Vez</string>
@@ -17,10 +17,12 @@
     <string name="label_password">Contraseña</string>
     <string name="label_address">Dirección</string>
 
-    <string name="tab_newComplaint">Nueva Denuncia</string>
+    <string name="tab_newComplaint">Denunciar</string>
     <string name="tab_myComplaint">Mis Denuncias</string>
     <string name="tab_complaints">Denuncias</string>
 
     <string name="new_complaint">Crear Denuncia</string>
     <string name="fragment_new_complaint">¿Quieres Realizar una Nueva Denuncia?</string>
+
+    <string name="loading" tools:ignore="TypographyEllipsis">Cargando Nombre...</string>
 </resources>

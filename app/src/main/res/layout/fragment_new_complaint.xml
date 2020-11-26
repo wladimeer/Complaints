@@ -19,100 +19,47 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/tab_newComplaint"
-            android:textColor="#191818"
-            android:textStyle="bold"
-            android:textSize="28sp"
-        />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_gravity="center"
             android:text="@string/fragment_new_complaint"
             android:textColor="#191818"
-            android:textSize="18sp"
+            android:textSize="16sp"
         />
 
-        <RelativeLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/label_name"
             android:layout_marginTop="22dp"
         >
 
-            <ImageView
-                android:id="@+id/new_complaint_icon_name"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_centerInParent="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                tools:ignore="ContentDescription"
-                android:src="@drawable/ic_plus"
-            />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/new_complaint_txt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/new_complaint_icon_name"
-                android:layout_toEndOf="@id/new_complaint_icon_name"
-                android:layout_centerInParent="true"
-                android:hint="@string/label_name"
-            >
-<!--                app:endIconMode="clear_text"-->
+                android:inputType="text"
+                android:textSize="16sp"
+            />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/new_complaint_txt_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="16sp"
-                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/label_address"
             android:layout_marginTop="22dp"
         >
 
-            <ImageView
-                android:id="@+id/new_complaint_icon_address"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_centerInParent="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                tools:ignore="ContentDescription"
-                android:src="@drawable/ic_address"
-            />
-
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/new_complaint_txt_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/new_complaint_icon_address"
-                android:layout_toEndOf="@id/new_complaint_icon_address"
-                android:layout_centerInParent="true"
-                android:hint="@string/label_email"
-            >
-<!--                app:endIconMode="clear_text"-->
+                android:inputType="text"
+                android:textSize="16sp"
+            />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/new_complaint_txt_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:textSize="16sp"
-                />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </RelativeLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/new_complaint_new_complaint"

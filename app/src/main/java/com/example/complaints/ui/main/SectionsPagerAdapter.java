@@ -32,9 +32,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0: return new NewComplaintFragment();
             case 1: return new MyComplaintsFragment();
             case 2: return new ComplaintsFragment();
+            default: return null;
         }
-
-        return null;
     }
 
     @Nullable
