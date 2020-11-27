@@ -148,8 +148,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_gravity="center"
-            android:text="@string/label_options"
-            android:textColor="#191818"
+            android:text="@string/label_option"
+            android:textColor="#BCBCB6"
             android:textSize="18sp"
         />
 
@@ -165,11 +165,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="28dp"
             android:layout_gravity="center"
             android:text="@string/noAccount"
             android:onClick="goToRegister"
-            android:textColor="#FF5722"
+            android:textColor="#191818"
             android:textSize="18sp"
         />
 

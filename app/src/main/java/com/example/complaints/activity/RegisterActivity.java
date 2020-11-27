@@ -3,7 +3,6 @@ package com.example.complaints.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -67,7 +66,6 @@ public class RegisterActivity extends AppCompatActivity {
             assistant.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        @SuppressLint("SetTextI18n")
                         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
@@ -88,8 +86,11 @@ public class RegisterActivity extends AppCompatActivity {
                                 txt_password.setText("");
 
                                 Toast.makeText(RegisterActivity.this, "Cuenta Creada con Exito", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
-                                Toast.makeText(RegisterActivity.this, "Error al Crear la Cuenta", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Verifica los Datos Ingresados", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

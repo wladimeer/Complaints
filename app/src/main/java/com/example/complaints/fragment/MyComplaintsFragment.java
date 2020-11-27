@@ -62,13 +62,18 @@ public class MyComplaintsFragment extends Fragment {
 
                         complaintList.add(complaint);
                     }
-
-                    ComplaintAdapter adapter = new ComplaintAdapter(getActivity(), complaintList, R.layout.item_complaint);
-                    LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-                    manager.setOrientation(RecyclerView.VERTICAL);
-                    recycler.setLayoutManager(manager);
-                    recycler.setAdapter(adapter);
+                } else {
+                    complaintList.add(new Complaint(
+                            "Empty", "Aquí No Hay Nada",
+                            "Podrías Crear una Nueva Denuncia", false
+                    ));
                 }
+
+                ComplaintAdapter adapter = new ComplaintAdapter(getActivity(), complaintList, R.layout.item_complaint);
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+                manager.setOrientation(RecyclerView.VERTICAL);
+                recycler.setLayoutManager(manager);
+                recycler.setAdapter(adapter);
             }
 
             @Override
