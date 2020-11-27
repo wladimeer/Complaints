@@ -28,4 +28,7 @@
     <string name="no_network">Sin Conección</string>
     <string name="verify">Verifica la Conección a Internet y Vuelve a Intentarlo</string>
     <string name="exit">Salir de la Aplicación</string>
+
+    <string name="facebook_app_id">674579730084873</string>
+    <string name="fb_login_protocol_scheme">fb674579730084873</string>
 </resources>

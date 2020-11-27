@@ -153,79 +153,14 @@
             android:textSize="18sp"
         />
 
-        <RelativeLayout
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_facebook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-        >
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="@drawable/ly_button"
-                android:backgroundTint="#1DA1F2"
-                android:orientation="horizontal"
-                tools:ignore="UnusedAttribute"
-                android:gravity="center"
-                android:padding="8dp"
-            >
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    tools:ignore="ContentDescription"
-                    android:src="@drawable/ic_twitter"
-                />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/twitter"
-                    android:textColor="#FFFFFF"
-                    android:textAllCaps="false"
-                    android:textSize="20sp"
-                />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:background="@drawable/ly_button"
-                android:backgroundTint="#3B5998"
-                android:orientation="horizontal"
-                tools:ignore="UnusedAttribute"
-                android:gravity="center"
-                android:padding="8dp"
-            >
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    tools:ignore="ContentDescription"
-                    android:src="@drawable/ic_facebook"
-                />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginEnd="6dp"
-                    android:text="@string/facebook"
-                    android:textColor="#FFFFFF"
-                    android:textAllCaps="false"
-                    android:textSize="20sp"
-                />
-
-            </LinearLayout>
-
-        </RelativeLayout>
+            android:textStyle="normal"
+            android:textSize="20sp"
+        />
 
         <TextView
             android:layout_width="wrap_content"
@@ -235,16 +170,6 @@
             android:text="@string/noAccount"
             android:onClick="goToRegister"
             android:textColor="#FF5722"
-            android:textSize="18sp"
-        />
-
-        <TextView
-            android:id="@+id/login_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="center"
-            android:textColor="#020202"
             android:textSize="18sp"
         />
 

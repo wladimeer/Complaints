@@ -1,7 +1,6 @@
 package com.example.complaints.fragment;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.RequiresApi;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 import com.example.complaints.R;
 import com.example.complaints.model.Complaint;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +21,6 @@ import java.util.Objects;
 public class NewComplaintFragment extends Fragment {
     private EditText txt_name, txt_address;
     private FirebaseAuth assistant;
-    private TextView message;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,7 +28,6 @@ public class NewComplaintFragment extends Fragment {
 
         txt_name = view.findViewById(R.id.new_complaint_txt_name);
         txt_address = view.findViewById(R.id.new_complaint_txt_address);
-        message = view.findViewById(R.id.new_complaint_message);
         assistant = FirebaseAuth.getInstance();
 
         Button new_complaint = view.findViewById(R.id.new_complaint_new_complaint);
@@ -65,8 +62,6 @@ public class NewComplaintFragment extends Fragment {
             }
         }
 
-        message.setTextColor(Color.parseColor("#D81F1F"));
-
         if(error.isEmpty()) {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference reference = database.getReference("complaint").child(uid);
@@ -81,10 +76,9 @@ public class NewComplaintFragment extends Fragment {
             txt_name.setText("");
             txt_address.setText("");
 
-            message.setTextColor(Color.parseColor("#3AAC28"));
-            message.setText("Denuncia Creada con Exito");
+            Toast.makeText(getActivity(), "Denuncia Creada con Exito", Toast.LENGTH_SHORT).show();
         } else {
-            message.setText(error);
+            Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -236,16 +236,6 @@
             android:textSize="18sp"
         />
 
-        <TextView
-            android:id="@+id/register_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="center"
-            android:textColor="#020202"
-            android:textSize="18sp"
-        />
-
     </LinearLayout>
 
 </RelativeLayout>

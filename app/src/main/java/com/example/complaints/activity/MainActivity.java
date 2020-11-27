@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import com.example.complaints.R;
 import com.example.complaints.model.User;
+import com.facebook.login.LoginManager;
 import com.google.android.material.tabs.TabLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.example.complaints.ui.main.SectionsPagerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,29 +33,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        title = findViewById(R.id.main_title);
-
         FirebaseAuth assistant = FirebaseAuth.getInstance();
-        loadName(Objects.requireNonNull(assistant.getCurrentUser()).getUid());
+        FirebaseUser user = assistant.getCurrentUser();
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(
-                this, getSupportFragmentManager()
-        );
+        if(user == null) {
+            goToLogin();
+        } else {
+            title = findViewById(R.id.main_title);
 
-        ViewPager viewPager = findViewById(R.id.main_view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
+            if(user.getDisplayName() != null) {
+                title.setText(user.getDisplayName());
+            } else {
+                loadName(Objects.requireNonNull(user).getUid());
+            }
 
-        TabLayout tabs = findViewById(R.id.main_tabs);
-        tabs.setupWithViewPager(viewPager);
+            SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(
+                    this, getSupportFragmentManager()
+            );
+
+            ViewPager viewPager = findViewById(R.id.main_view_pager);
+            viewPager.setAdapter(sectionsPagerAdapter);
+
+            TabLayout tabs = findViewById(R.id.main_tabs);
+            tabs.setupWithViewPager(viewPager);
+        }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void loadName(final String uid) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("user");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot result : dataSnapshot.getChildren()) {
                     if (dataSnapshot.exists()) {
@@ -73,12 +85,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void signOff(View view) {
-        FirebaseAuth assistant = FirebaseAuth.getInstance();
-        assistant.signOut();
-
+    private  void goToLogin() {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void signOff(View view) {
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+        goToLogin();
     }
 }

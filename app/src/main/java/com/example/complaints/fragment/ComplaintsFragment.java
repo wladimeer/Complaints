@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import com.example.complaints.R;
 import com.example.complaints.adapter.ComplaintAdapter;
 import com.example.complaints.model.Complaint;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ComplaintsFragment extends Fragment {
     private List<Complaint> complaintList;
@@ -35,8 +33,6 @@ public class ComplaintsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_complaints, container, false);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        FirebaseAuth assistant = FirebaseAuth.getInstance();
-        String uid = Objects.requireNonNull(assistant.getCurrentUser()).getUid();
 
         recycler = view.findViewById(R.id.complaints_recycler);
         reference = database.getReference("complaint");

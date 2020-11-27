@@ -5,12 +5,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 import com.example.complaints.R;
 import com.example.complaints.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,7 +23,6 @@ import java.util.Objects;
 public class RegisterActivity extends AppCompatActivity {
     private EditText txt_email, txt_name, txt_cellphone, txt_password;
     private FirebaseAuth assistant;
-    private TextView message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
         txt_name = findViewById(R.id.register_txt_name);
         txt_cellphone = findViewById(R.id.register_txt_cellphone);
         txt_password = findViewById(R.id.register_txt_password);
-        message = findViewById(R.id.register_message);
         assistant = FirebaseAuth.getInstance();
     }
 
@@ -66,8 +63,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
 
-        message.setTextColor(Color.parseColor("#D81F1F"));
-
         if(error.isEmpty()) {
             assistant.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -92,15 +87,14 @@ public class RegisterActivity extends AppCompatActivity {
                                 txt_cellphone.setText("");
                                 txt_password.setText("");
 
-                                message.setText("Cuenta Creada con Exito");
-                                message.setTextColor(Color.parseColor("#3AAC28"));
+                                Toast.makeText(RegisterActivity.this, "Cuenta Creada con Exito", Toast.LENGTH_SHORT).show();
                             } else {
-                                message.setText("Error al Crear la Cuenta");
+                                Toast.makeText(RegisterActivity.this, "Error al Crear la Cuenta", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         } else {
-            message.setText(error);
+            Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_SHORT).show();
         }
     }
 
