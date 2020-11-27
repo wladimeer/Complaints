@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.NoNetworkActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="12dp"
+>
+
+    <ImageView
+        android:id="@+id/no_network_logo"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ly_logo"
+        tools:ignore="ContentDescription"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/no_network_logo"
+        android:layout_marginTop="18dp"
+        android:orientation="vertical"
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_network"
+            android:textColor="#191818"
+            android:textStyle="bold"
+            android:textSize="28sp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/verify"
+            android:textColor="#191818"
+            android:textSize="18sp"
+        />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ly_button"
+            android:backgroundTint="#F26824"
+            android:layout_marginTop="22dp"
+            tools:ignore="UnusedAttribute"
+            android:text="@string/exit"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:onClick="exit"
+            android:padding="12dp"
+        />
+
+    </LinearLayout>
+
+</RelativeLayout>

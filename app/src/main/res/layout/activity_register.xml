@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.RegisterActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="12dp"
+>
+
+    <ImageView
+        android:id="@+id/register_logo"
+        android:layout_width="220dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ly_logo"
+        tools:ignore="ContentDescription"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/register_logo"
+        android:layout_marginTop="18dp"
+        android:orientation="vertical"
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/register"
+            android:textColor="#191818"
+            android:textStyle="bold"
+            android:textSize="28sp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:text="@string/message_register"
+            android:textColor="#191818"
+            android:textSize="18sp"
+        />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+        >
+
+            <ImageView
+                android:id="@+id/register_icon_email"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/ic_email"
+            />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/register_icon_email"
+                android:layout_toEndOf="@id/register_icon_email"
+                android:layout_centerInParent="true"
+                android:hint="@string/label_email"
+                app:endIconMode="clear_text"
+            >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_txt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textSize="16sp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+        >
+
+            <ImageView
+                android:id="@+id/register_icon_user"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/ic_user"
+                android:padding="1dp"
+            />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/register_icon_user"
+                android:layout_toEndOf="@id/register_icon_user"
+                android:layout_centerInParent="true"
+                android:hint="@string/label_name"
+                app:endIconMode="clear_text"
+            >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_txt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+        >
+
+            <ImageView
+                android:id="@+id/register_icon_cellphone"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:padding="4dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/ic_phone"
+            />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/register_icon_cellphone"
+                android:layout_toEndOf="@id/register_icon_cellphone"
+                android:layout_centerInParent="true"
+                android:hint="@string/label_cellphone"
+                app:endIconMode="clear_text"
+            >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_txt_cellphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="16sp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+        >
+
+            <ImageView
+                android:id="@+id/register_icon_pass"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/ic_password"
+            />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/register_icon_pass"
+                android:layout_toEndOf="@id/register_icon_pass"
+                android:layout_centerInParent="true"
+                android:hint="@string/label_password"
+                app:endIconMode="password_toggle"
+            >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_txt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ly_button"
+            android:backgroundTint="#F26824"
+            android:layout_marginTop="22dp"
+            tools:ignore="UnusedAttribute"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:onClick="register"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="12dp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/withAccount"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"
+            android:onClick="goToLogin"
+            android:textColor="#FF5722"
+            android:textSize="18sp"
+        />
+
+    </LinearLayout>
+
+</RelativeLayout>
