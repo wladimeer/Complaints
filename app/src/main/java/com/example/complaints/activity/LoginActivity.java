@@ -4,10 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 import com.example.complaints.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.tapadoo.alerter.Alerter;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener listener;
@@ -65,7 +66,9 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                Toast.makeText(LoginActivity.this, "Operación Cancelada", Toast.LENGTH_SHORT).show();
+                Alerter.create(LoginActivity.this).setTitle("Atención").setText("Operación Cancelada")
+                        .setIcon(R.drawable.ic_alert).setBackgroundColorRes(R.color.colorPrimaryDark)
+                        .setDuration(3000).show();
             }
 
             @Override
@@ -98,14 +101,27 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                                goToMainMenu();
+                                Alerter.create(LoginActivity.this).setTitle("Atención").setText("Iniciando Sesión...")
+                                        .setIcon(R.drawable.ic_checking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                                        .setDuration(3000).show();
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        goToMainMenu();
+                                    }
+                                }, 3000);
                             } else {
-                                Toast.makeText(LoginActivity.this, "Verifica los Datos Ingresados", Toast.LENGTH_SHORT).show();
+                                Alerter.create(LoginActivity.this).setTitle("Atención").setText("Verifica los Datos Ingresados")
+                                        .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                                        .setDuration(3000).show();
                             }
                         }
                     });
         } else {
-            Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+            Alerter.create(LoginActivity.this).setTitle("Atención").setText(error)
+                    .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                    .setDuration(3000).show();
         }
     }
 
@@ -117,7 +133,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     goToMainMenu();
                 } else {
-                    Toast.makeText(LoginActivity.this, "Ocurrió un Error", Toast.LENGTH_LONG).show();
+                    Alerter.create(LoginActivity.this).setTitle("Atención").setText("Ocurrió un Error")
+                            .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                            .setDuration(3000).show();
                 }
             }
         });

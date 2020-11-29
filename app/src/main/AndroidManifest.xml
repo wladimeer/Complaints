@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.complaints">
+    package="com.example.complaints"
+>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".activity.Complaints"
         android:allowBackup="true"
-        android:icon="@drawable/ic_strike"
+        android:icon="@drawable/ic_application"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_strike"
+        android:roundIcon="@drawable/ic_application"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup"
     >
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
+            android:value="@string/facebook_app_id"
+        />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+        />
         <activity
             android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
+            android:exported="true"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -37,10 +41,12 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+        />
         <activity
             android:name=".activity.InitialActivity"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import com.example.complaints.R;
 import com.example.complaints.model.Complaint;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tapadoo.alerter.Alerter;
 import java.util.Objects;
 
 public class NewComplaintFragment extends Fragment {
@@ -23,6 +23,7 @@ public class NewComplaintFragment extends Fragment {
     private FirebaseAuth assistant;
 
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_complaint, container, false);
 
@@ -33,7 +34,6 @@ public class NewComplaintFragment extends Fragment {
         Button new_complaint = view.findViewById(R.id.new_complaint_new_complaint);
         new_complaint.setOnClickListener(new View.OnClickListener() {
             @Override
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onClick(View view) {
                 create();
             }
@@ -76,9 +76,13 @@ public class NewComplaintFragment extends Fragment {
             txt_name.setText("");
             txt_address.setText("");
 
-            Toast.makeText(getActivity(), "Denuncia Creada con Exito", Toast.LENGTH_SHORT).show();
+            Alerter.create(Objects.requireNonNull(getActivity())).setTitle("Atención").setText("Denuncia Creada con Exito")
+                    .setIcon(R.drawable.ic_checking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                    .setDuration(3000).show();
         } else {
-            Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+            Alerter.create(Objects.requireNonNull(getActivity())).setTitle("Atención").setText(error)
+                    .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                    .setDuration(3000).show();
         }
     }
 }

@@ -3,7 +3,6 @@ package com.example.complaints.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-
 import com.example.complaints.R;
 import com.example.complaints.model.User;
 import com.facebook.login.LoginManager;

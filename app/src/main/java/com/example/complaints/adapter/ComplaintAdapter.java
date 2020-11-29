@@ -48,7 +48,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
         Complaint complaint = complaintList.get(position);
 
         if(complaint.getId().equals("Empty")) {
-            holder.icon.setImageResource(R.drawable.ic_question);
+            holder.icon.setImageResource(R.drawable.ic_alert);
             holder.icon.setColorFilter(Color.parseColor("#D1D12B"));
         } else {
             if(complaint.isState()) {

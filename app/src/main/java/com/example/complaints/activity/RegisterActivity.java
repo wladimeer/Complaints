@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 import com.example.complaints.R;
 import com.example.complaints.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tapadoo.alerter.Alerter;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -85,17 +86,29 @@ public class RegisterActivity extends AppCompatActivity {
                                 txt_cellphone.setText("");
                                 txt_password.setText("");
 
-                                Toast.makeText(RegisterActivity.this, "Cuenta Creada con Exito", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                                finish();
+                                Alerter.create(RegisterActivity.this).setTitle("Atención").setText("Cuenta Creada, Iniciando Sesión...")
+                                        .setIcon(R.drawable.ic_checking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                                        .setDuration(3000).show();
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }, 3000);
                             } else {
-                                Toast.makeText(RegisterActivity.this, "Verifica los Datos Ingresados", Toast.LENGTH_SHORT).show();
+                                Alerter.create(RegisterActivity.this).setTitle("Atención").setText("Verifica los Datos Ingresados")
+                                        .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                                        .setDuration(3000).show();
                             }
                         }
                     });
         } else {
-            Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_SHORT).show();
+            Alerter.create(RegisterActivity.this).setTitle("Atención").setText(error)
+                    .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
+                    .setDuration(3000).show();
         }
     }
 
