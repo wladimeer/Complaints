@@ -4,10 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 import com.example.complaints.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -17,6 +18,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -28,17 +30,20 @@ public class LoginActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     private EditText txt_email, txt_password;
     private FirebaseAuth assistant;
+    private RelativeLayout view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        view = findViewById(R.id.login_view);
+
         assistant = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
         final FirebaseUser user = assistant.getCurrentUser();
 
-        LoginButton loginButton = findViewById(R.id.login_facebook);
+        final LoginButton loginButton = findViewById(R.id.login_facebook);
         loginButton.setReadPermissions("email");
 
         if(user == null) {
@@ -65,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                Toast.makeText(LoginActivity.this, "Operación Cancelada", Toast.LENGTH_SHORT).show();
+                loadMessage("Operación Cancelada");
             }
 
             @Override
@@ -73,6 +78,11 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("LoginActivity: ", exception.toString());
             }
         });
+    }
+
+    public void loadMessage(String message) {
+        Snackbar snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT);
+        snackbar.show();
     }
 
     public void login(View view) {
@@ -98,14 +108,21 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                                goToMainMenu();
+                                loadMessage("Iniciando Sesión...");
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        goToMainMenu();
+                                    }
+                                }, 3000);
                             } else {
-                                Toast.makeText(LoginActivity.this, "Verifica los Datos Ingresados", Toast.LENGTH_SHORT).show();
+                                loadMessage("Verifica los Datos Ingresados");
                             }
                         }
                     });
         } else {
-            Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+            loadMessage(error);
         }
     }
 
@@ -117,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     goToMainMenu();
                 } else {
-                    Toast.makeText(LoginActivity.this, "Ocurrió un Error", Toast.LENGTH_LONG).show();
+                    loadMessage("Ocurrió un Error");
                 }
             }
         });

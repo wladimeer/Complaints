@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 import com.example.complaints.R;
 import com.example.complaints.model.Complaint;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,12 +21,15 @@ import java.util.Objects;
 
 public class NewComplaintFragment extends Fragment {
     private EditText txt_name, txt_address;
+    private FrameLayout view_complaint;
     private FirebaseAuth assistant;
 
     @Override
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_complaint, container, false);
 
+        view_complaint = view.findViewById(R.id.new_complaint_view);
         txt_name = view.findViewById(R.id.new_complaint_txt_name);
         txt_address = view.findViewById(R.id.new_complaint_txt_address);
         assistant = FirebaseAuth.getInstance();
@@ -33,13 +37,17 @@ public class NewComplaintFragment extends Fragment {
         Button new_complaint = view.findViewById(R.id.new_complaint_new_complaint);
         new_complaint.setOnClickListener(new View.OnClickListener() {
             @Override
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onClick(View view) {
                 create();
             }
         });
 
         return view;
+    }
+
+    public void loadMessage(String message) {
+        Snackbar snackbar = Snackbar.make(view_complaint, message, Snackbar.LENGTH_SHORT);
+        snackbar.show();
     }
 
     @SuppressLint("SetTextI18n")
@@ -76,9 +84,9 @@ public class NewComplaintFragment extends Fragment {
             txt_name.setText("");
             txt_address.setText("");
 
-            Toast.makeText(getActivity(), "Denuncia Creada con Exito", Toast.LENGTH_SHORT).show();
+            loadMessage("Denuncia Creada con Exito");
         } else {
-            Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+            loadMessage(error);
         }
     }
 }

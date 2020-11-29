@@ -1,5 +1,6 @@
 package com.example.complaints.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -42,15 +43,21 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
     }
 
     @Override
+    @SuppressLint("SetTextI18n")
     public void onBindViewHolder(@NonNull ComplaintHolder holder, int position) {
         Complaint complaint = complaintList.get(position);
 
-        if(complaint.isState()) {
-            holder.icon.setImageResource(R.drawable.ic_checking);
-            holder.icon.setColorFilter(Color.parseColor("#39D119"));
+        if(complaint.getId().equals("Empty")) {
+            holder.icon.setImageResource(R.drawable.ic_alert);
+            holder.icon.setColorFilter(Color.parseColor("#D1D12B"));
         } else {
-            holder.icon.setImageResource(R.drawable.ic_withoutchecking);
-            holder.icon.setColorFilter(Color.parseColor("#D12919"));
+            if(complaint.isState()) {
+                holder.icon.setImageResource(R.drawable.ic_checking);
+                holder.icon.setColorFilter(Color.parseColor("#39D119"));
+            } else {
+                holder.icon.setImageResource(R.drawable.ic_withoutchecking);
+                holder.icon.setColorFilter(Color.parseColor("#D12919"));
+            }
         }
 
         holder.name.setText(complaint.getName());
