@@ -10,16 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import com.example.complaints.R;
 import com.example.complaints.model.Complaint;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tapadoo.alerter.Alerter;
 import java.util.Objects;
 
 public class NewComplaintFragment extends Fragment {
     private EditText txt_name, txt_address;
+    private FrameLayout view_complaint;
     private FirebaseAuth assistant;
 
     @Override
@@ -27,6 +29,7 @@ public class NewComplaintFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_complaint, container, false);
 
+        view_complaint = view.findViewById(R.id.new_complaint_view);
         txt_name = view.findViewById(R.id.new_complaint_txt_name);
         txt_address = view.findViewById(R.id.new_complaint_txt_address);
         assistant = FirebaseAuth.getInstance();
@@ -40,6 +43,11 @@ public class NewComplaintFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public void loadMessage(String message) {
+        Snackbar snackbar = Snackbar.make(view_complaint, message, Snackbar.LENGTH_SHORT);
+        snackbar.show();
     }
 
     @SuppressLint("SetTextI18n")
@@ -76,13 +84,9 @@ public class NewComplaintFragment extends Fragment {
             txt_name.setText("");
             txt_address.setText("");
 
-            Alerter.create(Objects.requireNonNull(getActivity())).setTitle("Atención").setText("Denuncia Creada con Exito")
-                    .setIcon(R.drawable.ic_checking).setBackgroundColorRes(R.color.colorPrimaryDark)
-                    .setDuration(3000).show();
+            loadMessage("Denuncia Creada con Exito");
         } else {
-            Alerter.create(Objects.requireNonNull(getActivity())).setTitle("Atención").setText(error)
-                    .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
-                    .setDuration(3000).show();
+            loadMessage(error);
         }
     }
 }

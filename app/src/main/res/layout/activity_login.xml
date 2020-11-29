@@ -6,6 +6,7 @@
     tools:context=".activity.LoginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/login_view"
     android:background="#FFFFFF"
     android:padding="12dp"
 >
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_below="@id/login_logo"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
     >
 
@@ -146,7 +147,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="14dp"
             android:layout_gravity="center"
             android:text="@string/label_option"
             android:textColor="#BCBCB6"

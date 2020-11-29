@@ -9,31 +9,39 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import com.example.complaints.R;
 import com.example.complaints.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tapadoo.alerter.Alerter;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText txt_email, txt_name, txt_cellphone, txt_password;
     private FirebaseAuth assistant;
+    private RelativeLayout view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        view = findViewById(R.id.register_view);
         txt_email = findViewById(R.id.register_txt_email);
         txt_name = findViewById(R.id.register_txt_name);
         txt_cellphone = findViewById(R.id.register_txt_cellphone);
         txt_password = findViewById(R.id.register_txt_password);
         assistant = FirebaseAuth.getInstance();
+    }
+
+    public void loadMessage(String message) {
+        Snackbar snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT);
+        snackbar.show();
     }
 
     public void register(View view) {
@@ -86,9 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 txt_cellphone.setText("");
                                 txt_password.setText("");
 
-                                Alerter.create(RegisterActivity.this).setTitle("Atención").setText("Cuenta Creada, Iniciando Sesión...")
-                                        .setIcon(R.drawable.ic_checking).setBackgroundColorRes(R.color.colorPrimaryDark)
-                                        .setDuration(3000).show();
+                                loadMessage("Cuenta Creada, Iniciando Sesión...");
 
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
@@ -99,16 +105,12 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
                                 }, 3000);
                             } else {
-                                Alerter.create(RegisterActivity.this).setTitle("Atención").setText("Verifica los Datos Ingresados")
-                                        .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
-                                        .setDuration(3000).show();
+                                loadMessage("Verifica los Datos Ingresados");
                             }
                         }
                     });
         } else {
-            Alerter.create(RegisterActivity.this).setTitle("Atención").setText(error)
-                    .setIcon(R.drawable.ic_withoutchecking).setBackgroundColorRes(R.color.colorPrimaryDark)
-                    .setDuration(3000).show();
+            loadMessage(error);
         }
     }
 
