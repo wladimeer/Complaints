@@ -14,26 +14,24 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.complaints.R;
 import com.example.complaints.model.Complaint;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tapadoo.alerter.Alerter;
 import java.util.List;
 import java.util.Objects;
 
 public class MyComplaintsAdapter extends RecyclerView.Adapter<MyComplaintsAdapter.MyComplaintsHolder> {
     private List<Complaint> complaintList;
-    private Activity activity;
     private int layout;
 
     public MyComplaintsAdapter(Activity activity, List<Complaint> complaintList, int layout) {
         this.complaintList = complaintList;
-        this.activity = activity;
         this.layout = layout;
     }
 
-    public class MyComplaintsHolder extends RecyclerView.ViewHolder {
+    public static class MyComplaintsHolder extends RecyclerView.ViewHolder {
         TextView id, name, address;
         DatabaseReference reference;
         ImageView icon, delete;
@@ -63,9 +61,8 @@ public class MyComplaintsAdapter extends RecyclerView.Adapter<MyComplaintsAdapte
         private void delete(String id) {
             reference.child(id).removeValue();
 
-            Alerter.create(activity).setTitle("Atención").setText("Denuncia Eliminada")
-                    .setIcon(R.drawable.ic_checking).setBackgroundColorRes(R.color.colorPrimaryDark)
-                    .setDuration(3000).show();
+            Snackbar snackbar = Snackbar.make(itemView, "Denuncia Eliminada", Snackbar.LENGTH_SHORT);
+            snackbar.show();
         }
     }
 

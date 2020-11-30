@@ -47,9 +47,9 @@ public class ComplaintsFragment extends Fragment {
             @Override
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    complaintList.clear();
+                complaintList.clear();
 
+                if(dataSnapshot.exists()) {
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         for(DataSnapshot sn : snapshot.getChildren()) {
                             Complaint complaint = sn.getValue(Complaint.class);
@@ -64,7 +64,7 @@ public class ComplaintsFragment extends Fragment {
                 } else {
                     complaintList.add(new Complaint(
                             "Empty", "No Hay Nada Registrado",
-                            "Podrías Crear una Nueva Denuncia!", false
+                            "Crea una Nueva Denuncia!", false
                     ));
                 }
 

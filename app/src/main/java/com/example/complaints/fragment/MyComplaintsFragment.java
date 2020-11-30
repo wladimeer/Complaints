@@ -50,9 +50,9 @@ public class MyComplaintsFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    complaintList.clear();
+                complaintList.clear();
 
+                if(dataSnapshot.exists()) {
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Complaint complaint = snapshot.getValue(Complaint.class);
 
@@ -65,7 +65,7 @@ public class MyComplaintsFragment extends Fragment {
                 } else {
                     complaintList.add(new Complaint(
                             "Empty", "No Hay Nada Registrado",
-                            "Podrías Crear una Nueva Denuncia!", false
+                            "Crea una Nueva Denuncia!", false
                     ));
                 }
 

@@ -57,7 +57,6 @@
         </activity>
         <activity
             android:name=".activity.RegisterActivity"
-            android:windowSoftInputMode="adjustResize"
         />
         <activity android:name=".activity.NoNetworkActivity" />
         <activity

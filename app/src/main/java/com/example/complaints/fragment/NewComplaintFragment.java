@@ -84,7 +84,7 @@ public class NewComplaintFragment extends Fragment {
             txt_name.setText("");
             txt_address.setText("");
 
-            loadMessage("Denuncia Creada con Exito");
+            loadMessage("Denuncia Creada");
         } else {
             loadMessage(error);
         }
