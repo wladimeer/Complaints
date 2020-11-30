@@ -47,6 +47,7 @@
             android:layout_gravity="center"
             android:text="@string/name"
             android:textColor="#191818"
+            android:gravity="center"
             android:textSize="18sp"
         />
 

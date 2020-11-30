@@ -24,6 +24,7 @@
             android:layout_gravity="center"
             android:text="@string/fragment_new_complaint"
             android:textColor="#191818"
+            android:gravity="center"
             android:textSize="16sp"
         />
 

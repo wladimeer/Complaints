@@ -38,6 +38,7 @@
             android:text="@string/login"
             android:textColor="#191818"
             android:textStyle="bold"
+            android:gravity="center"
             android:textSize="28sp"
         />
 
@@ -48,6 +49,7 @@
             android:layout_gravity="center"
             android:text="@string/login_message"
             android:textColor="#191818"
+            android:gravity="center"
             android:textSize="18sp"
         />
 
@@ -151,6 +153,7 @@
             android:layout_gravity="center"
             android:text="@string/label_option"
             android:textColor="#BCBCB6"
+            android:gravity="center"
             android:textSize="18sp"
         />
 
@@ -171,6 +174,7 @@
             android:text="@string/noAccount"
             android:onClick="goToRegister"
             android:textColor="#191818"
+            android:gravity="center"
             android:textSize="18sp"
         />
 
