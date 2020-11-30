@@ -47,9 +47,9 @@ public class ComplaintsFragment extends Fragment {
             @Override
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    complaintList.clear();
+                complaintList.clear();
 
+                if(dataSnapshot.exists()) {
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         for(DataSnapshot sn : snapshot.getChildren()) {
                             Complaint complaint = sn.getValue(Complaint.class);
@@ -61,18 +61,23 @@ public class ComplaintsFragment extends Fragment {
                             complaintList.add(complaint);
                         }
                     }
-
-                    ComplaintAdapter adapter = new ComplaintAdapter(getActivity(), complaintList, R.layout.item_complaint);
-                    LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-                    manager.setOrientation(RecyclerView.VERTICAL);
-                    recycler.setLayoutManager(manager);
-                    recycler.setAdapter(adapter);
+                } else {
+                    complaintList.add(new Complaint(
+                            "Empty", "No Hay Nada Registrado",
+                            "Crea una Nueva Denuncia!", false
+                    ));
                 }
+
+                ComplaintAdapter adapter = new ComplaintAdapter(getActivity(), complaintList, R.layout.item_complaint);
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+                manager.setOrientation(RecyclerView.VERTICAL);
+                recycler.setLayoutManager(manager);
+                recycler.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("ComplaintsFragment ", error.toString());
+                Log.d("ComplaintsFragment: ", error.toString());
             }
         });
     }

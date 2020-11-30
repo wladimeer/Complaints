@@ -1,14 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Denuncia Ciudadana</string>
     <string name="login">Iniciar Sesión</string>
-    <string name="login_message">Hola!, Gusto en Verte Otra Vez</string>
-    <string name="label_options">Elige una Cuenta para Iniciar Sesión</string>
+    <string name="login_message">Hola! Gusto en Verte Otra Vez</string>
+    <string name="label_option">Puedes Iniciar Sesión con Facebook!</string>
     <string name="facebook">Facebook</string>
     <string name="twitter">Twitter</string>
     <string name="noAccount">¿No Tienes una Cuenta? Registrate</string>
 
     <string name="register">Crear Cuenta</string>
-    <string name="message_register">Hola!, Sólo te Tomará 3 Minutos</string>
+    <string name="message_register">Hola! Sólo te Tomará 3 Minutos</string>
     <string name="withAccount">¿Tienes una Cuenta? Inicia Sesión</string>
 
     <string name="label_email">Correo</string>
@@ -31,4 +31,8 @@
 
     <string name="facebook_app_id">674579730084873</string>
     <string name="fb_login_protocol_scheme">fb674579730084873</string>
+
+    <string name="creator">Creador de Denuncia Ciudadana</string>
+    <string name="name">Sebastián Benavides Cartes</string>
+    <string name="back">Volver al Menu Principal</string>
 </resources>

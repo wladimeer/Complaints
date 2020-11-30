@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.complaints.R;
-import com.example.complaints.adapter.ComplaintAdapter;
+import com.example.complaints.adapter.MyComplaintsAdapter;
 import com.example.complaints.model.Complaint;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -50,9 +50,9 @@ public class MyComplaintsFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    complaintList.clear();
+                complaintList.clear();
 
+                if(dataSnapshot.exists()) {
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Complaint complaint = snapshot.getValue(Complaint.class);
 
@@ -62,18 +62,23 @@ public class MyComplaintsFragment extends Fragment {
 
                         complaintList.add(complaint);
                     }
-
-                    ComplaintAdapter adapter = new ComplaintAdapter(getActivity(), complaintList, R.layout.item_complaint);
-                    LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-                    manager.setOrientation(RecyclerView.VERTICAL);
-                    recycler.setLayoutManager(manager);
-                    recycler.setAdapter(adapter);
+                } else {
+                    complaintList.add(new Complaint(
+                            "Empty", "No Hay Nada Registrado",
+                            "Crea una Nueva Denuncia!", false
+                    ));
                 }
+
+                MyComplaintsAdapter adapter = new MyComplaintsAdapter(getActivity(), complaintList, R.layout.item_my_complaints);
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+                manager.setOrientation(RecyclerView.VERTICAL);
+                recycler.setLayoutManager(manager);
+                recycler.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("MyComplaintsFragment ", error.toString());
+                Log.d("MyComplaintsFragment: ", error.toString());
             }
         });
     }

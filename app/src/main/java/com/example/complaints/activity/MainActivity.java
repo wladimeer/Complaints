@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             title = findViewById(R.id.main_title);
 
-            if(user.getDisplayName() != null) {
-                title.setText(user.getDisplayName());
-            } else {
+            if(user.getDisplayName() == null || user.getDisplayName().isEmpty()) {
                 loadName(Objects.requireNonNull(user).getUid());
+            } else {
+                title.setText(user.getDisplayName());
             }
 
             SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(
@@ -95,5 +95,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
         goToLogin();
+    }
+
+    public void goToCreator(View view) {
+        Intent intent = new Intent(MainActivity.this, CreatorActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
